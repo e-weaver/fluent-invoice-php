@@ -22,6 +22,18 @@ class Invoice
     {
         $this->data['id'] = $id;
         $this->data['date'] = date('F j, Y');
+        
+        // Attempt to load default 'from' address from .env / environment variables
+        $defaultFrom = [];
+        if (getenv('INVOICE_FROM_NAME')) $defaultFrom[] = getenv('INVOICE_FROM_NAME');
+        if (getenv('INVOICE_FROM_STREET')) $defaultFrom[] = getenv('INVOICE_FROM_STREET');
+        if (getenv('INVOICE_FROM_CITY')) $defaultFrom[] = getenv('INVOICE_FROM_CITY');
+        if (getenv('INVOICE_FROM_EMAIL')) $defaultFrom[] = getenv('INVOICE_FROM_EMAIL');
+        if (getenv('INVOICE_FROM_PHONE')) $defaultFrom[] = getenv('INVOICE_FROM_PHONE');
+
+        if (!empty($defaultFrom)) {
+            $this->data['from'] = $defaultFrom;
+        }
     }
 
     public static function make(string $id): self

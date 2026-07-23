@@ -40,6 +40,17 @@ Invoice::make('INV-1023')
 
 And that's it! A beautifully formatted PDF will be saved to your specified path.
 
+### Auto-fill "From" Address via `.env`
+If you are generating invoices for your own company, you don't need to manually pass the `->from()` array every time. You can define the following environment variables in your `.env` file, and the package will automatically populate the "From" section for you!
+
+```env
+INVOICE_FROM_NAME="eWeaver Tech"
+INVOICE_FROM_STREET="123 Developer Lane"
+INVOICE_FROM_CITY="Tech City, TC 90210"
+INVOICE_FROM_EMAIL="hello@eweaver.in"
+INVOICE_FROM_PHONE="+1 (555) 123-4567"
+```
+
 ## Features
 
 - **Fluent API:** Clean, chainable methods.
