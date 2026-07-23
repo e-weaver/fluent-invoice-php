@@ -1,0 +1,21 @@
+{
+    "name": "e-weaver/fluent-invoice-php",
+    "description": "A lightweight, beautiful, and highly fluent PHP wrapper around dompdf to generate professional PDF invoices.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "eWeaver",
+            "email": "hello@eweaver.in"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "dompdf/dompdf": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eweaver\\FluentInvoice\\": "src/"
+        }
+    }
+}
