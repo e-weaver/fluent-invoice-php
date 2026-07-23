@@ -16,6 +16,7 @@ class Invoice
         'date' => '',
         'currency' => '$',
         'logo' => '',
+        'template' => 'default',
     ];
 
     public function __construct(string $id)
@@ -39,6 +40,12 @@ class Invoice
     public static function make(string $id): self
     {
         return new self($id);
+    }
+
+    public function template(string $name): self
+    {
+        $this->data['template'] = $name;
+        return $this;
     }
 
     public function from(array $details): self
@@ -86,7 +93,13 @@ class Invoice
     {
         ob_start();
         extract($this->data);
-        include __DIR__ . '/templates/template.php';
+        
+        $templatePath = __DIR__ . "/templates/{$template}.php";
+        if (!file_exists($templatePath)) {
+            $templatePath = __DIR__ . "/templates/default.php";
+        }
+        
+        include $templatePath;
         return ob_get_clean();
     }
 

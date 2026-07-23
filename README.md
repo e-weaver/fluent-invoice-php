@@ -18,6 +18,7 @@ composer require e-weaver/fluent-invoice-php
 use Eweaver\FluentInvoice\Invoice;
 
 Invoice::make('INV-1023')
+    ->template('minimal') // Choose from: default, minimal, corporate, bold, creative
     ->from([
         'eWeaver Tech',
         '123 Developer Lane',
@@ -34,11 +35,21 @@ Invoice::make('INV-1023')
     ->addItem('Monthly SEO Retainer', 500)
     ->currency('€')
     ->logo('https://example.com/path/to/logo.png')
-    ->setNotes('Thank you for your business!')
+    ->setNotes("Thank you for your business!\nPlease pay within 15 days.")
     ->save('invoice.pdf');
 ```
 
 And that's it! A beautifully formatted PDF will be saved to your specified path.
+
+## Available Templates
+
+You can completely change the look and feel of your invoice by simply calling the `->template('name')` method. We provide 5 highly professional templates out of the box:
+
+1. **`default`**: A clean, modern template with a blue accent.
+2. **`minimal`**: A stripped-down, elegant black-and-white design focused on typography and whitespace.
+3. **`corporate`**: A traditional, structured template with dark blue table headers for formal enterprise use.
+4. **`bold`**: A high-contrast template with solid black accents and impact-style typography.
+5. **`creative`**: A softer template featuring pastel accents and rounded styling elements.
 
 > **Tip for Notes:** You can use `\n` in the `->setNotes()` method to create multi-line notes! 
 > Example: `->setNotes("Please pay within 15 days.\nBank: XYZ Bank\nAccount: 123456")`
