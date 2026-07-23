@@ -51,6 +51,27 @@ INVOICE_FROM_EMAIL="hello@eweaver.in"
 INVOICE_FROM_PHONE="+1 (555) 123-4567"
 ```
 
+## Adding a Logo
+
+You can easily add a logo to the top left of your invoice. The `->logo()` method accepts several formats:
+
+**1. External URL:**
+```php
+->logo('https://example.com/logo.png')
+```
+*(Note: To use external URLs, `allow_url_fopen` must be enabled in your php.ini, which is usually the default).*
+
+**2. Local Absolute Path (Recommended for Speed):**
+```php
+->logo(__DIR__ . '/assets/images/logo.png')
+```
+
+**3. Base64 Encoded Image:**
+```php
+$base64 = 'data:image/png;base64,' . base64_encode(file_get_contents('logo.png'));
+->logo($base64)
+```
+
 ## Features
 
 - **Fluent API:** Clean, chainable methods.
