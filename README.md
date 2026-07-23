@@ -47,23 +47,23 @@ You can completely change the look and feel of your invoice by simply calling th
 
 ### 1. `default`
 A clean, modern template with a custom accent color.  
-![Default Template](assets/screenshots/default.png)
+<img src="assets/screenshots/default.png" width="400" alt="Default Template">
 
 ### 2. `minimal`
 A stripped-down, elegant black-and-white design focused on typography and whitespace.  
-![Minimal Template](assets/screenshots/minimal.png)
+<img src="assets/screenshots/minimal.png" width="400" alt="Minimal Template">
 
 ### 3. `corporate`
 A traditional, structured template with colored headers for formal enterprise use.  
-![Corporate Template](assets/screenshots/corporate.png)
+<img src="assets/screenshots/corporate.png" width="400" alt="Corporate Template">
 
 ### 4. `elegant`
 A luxurious template featuring serif typography, soft borders, and colored accents.  
-![Elegant Template](assets/screenshots/elegant.png)
+<img src="assets/screenshots/elegant.png" width="400" alt="Elegant Template">
 
 ### 5. `creative`
 A softer template featuring pastel accents and rounded styling elements.  
-![Creative Template](assets/screenshots/creative.png)
+<img src="assets/screenshots/creative.png" width="400" alt="Creative Template">
 
 ## Customizing Colors
 Each template comes with its own carefully selected default primary color (e.g., `#ff9a9e` for creative, `#2c3e50` for corporate). 
@@ -71,6 +71,13 @@ Each template comes with its own carefully selected default primary color (e.g.,
 However, you can override this and completely brand the invoice to your company by passing a hex code to the `->color()` method:
 ```php
 ->color('#10b981') // Overrides the default template color with Emerald Green
+```
+
+## Toggling Borders
+Some templates (`corporate`, `elegant`) come with an outer border by default to maintain their structural design, while others do not. You can easily override this behavior for *any* template using the `->withBorder()` method:
+```php
+->withBorder(true)  // Forces an outer border to render
+->withBorder(false) // Removes the outer border entirely
 ```
 
 > **Tip for Notes:** You can use `\n` in the `->setNotes()` method to create multi-line notes! 
