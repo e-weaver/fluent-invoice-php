@@ -19,7 +19,6 @@ use Eweaver\FluentInvoice\Invoice;
 
 Invoice::make('INV-1023')
     ->template('minimal') // Choose from: default, minimal, corporate, elegant, creative
-    ->color('#10b981') // Set a custom primary color (defaults to #3b82f6)
     ->from([
         'eWeaver Tech',
         '123 Developer Lane',
@@ -65,6 +64,14 @@ A luxurious template featuring serif typography, soft borders, and colored accen
 ### 5. `creative`
 A softer template featuring pastel accents and rounded styling elements.  
 ![Creative Template](assets/screenshots/creative.png)
+
+## Customizing Colors
+Each template comes with its own carefully selected default primary color (e.g., `#ff9a9e` for creative, `#2c3e50` for corporate). 
+
+However, you can override this and completely brand the invoice to your company by passing a hex code to the `->color()` method:
+```php
+->color('#10b981') // Overrides the default template color with Emerald Green
+```
 
 > **Tip for Notes:** You can use `\n` in the `->setNotes()` method to create multi-line notes! 
 > Example: `->setNotes("Please pay within 15 days.\nBank: XYZ Bank\nAccount: 123456")`

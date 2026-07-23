@@ -17,7 +17,7 @@ class Invoice
         'currency' => '$',
         'logo' => '',
         'template' => 'default',
-        'color' => '#3b82f6',
+        'color' => '',
     ];
 
     public function __construct(string $id)
@@ -99,6 +99,28 @@ class Invoice
     public function render(): string
     {
         ob_start();
+        
+        // Apply default colors per template if not explicitly set
+        if (empty($this->data['color'])) {
+            switch ($this->data['template']) {
+                case 'creative':
+                    $this->data['color'] = '#ff9a9e';
+                    break;
+                case 'corporate':
+                    $this->data['color'] = '#2c3e50';
+                    break;
+                case 'elegant':
+                    $this->data['color'] = '#4a5568';
+                    break;
+                case 'minimal':
+                    $this->data['color'] = '#000000';
+                    break;
+                default:
+                    $this->data['color'] = '#3b82f6';
+                    break;
+            }
+        }
+
         extract($this->data);
         
         $templatePath = __DIR__ . "/templates/{$template}.php";
