@@ -40,6 +40,9 @@ Invoice::make('INV-1023')
 
 And that's it! A beautifully formatted PDF will be saved to your specified path.
 
+> **Tip for Notes:** You can use `\n` in the `->setNotes()` method to create multi-line notes! 
+> Example: `->setNotes("Please pay within 15 days.\nBank: XYZ Bank\nAccount: 123456")`
+
 ### Auto-fill "From" Address via `.env`
 If you are generating invoices for your own company, you don't need to manually pass the `->from()` array every time. You can define the following environment variables in your `.env` file, and the package will automatically populate the "From" section for you!
 
