@@ -11,6 +11,7 @@
         .invoice-box table tr td:nth-child(2) { text-align: right; }
         .invoice-box table tr.top table td { padding-bottom: 30px; }
         .invoice-box table tr.top table td.title { font-size: 40px; line-height: 40px; color: #3b82f6; font-weight: bold; }
+        .invoice-box table tr.top table td.title img { max-height: 60px; max-width: 250px; }
         .invoice-box table tr.information table td { padding-bottom: 40px; }
         .invoice-box table tr.heading td { background: #f8fafc; border-bottom: 2px solid #e2e8f0; font-weight: bold; color: #475569; }
         .invoice-box table tr.item td { border-bottom: 1px solid #f1f5f9; color: #64748b; }
@@ -25,7 +26,13 @@
                 <td colspan="2">
                     <table>
                         <tr>
-                            <td class="title">INVOICE</td>
+                            <td class="title">
+                                <?php if (!empty($logo)): ?>
+                                    <img src="<?= htmlspecialchars($logo) ?>" alt="Logo">
+                                <?php else: ?>
+                                    INVOICE
+                                <?php endif; ?>
+                            </td>
                             <td>
                                 Invoice #: <?= htmlspecialchars($id) ?><br>
                                 Created: <?= htmlspecialchars($date) ?><br>
@@ -40,13 +47,15 @@
                         <tr>
                             <td>
                                 <strong>From:</strong><br>
-                                <?= htmlspecialchars($from_name) ?><br>
-                                <?= htmlspecialchars($from_email) ?>
+                                <?php foreach ($from as $line): ?>
+                                    <?= htmlspecialchars($line) ?><br>
+                                <?php endforeach; ?>
                             </td>
                             <td>
                                 <strong>To:</strong><br>
-                                <?= htmlspecialchars($to_name) ?><br>
-                                <?= htmlspecialchars($to_email) ?>
+                                <?php foreach ($to as $line): ?>
+                                    <?= htmlspecialchars($line) ?><br>
+                                <?php endforeach; ?>
                             </td>
                         </tr>
                     </table>
@@ -59,12 +68,12 @@
             <?php $subtotal = 0; foreach ($items as $item): $subtotal += $item['total']; ?>
             <tr class="item">
                 <td><?= htmlspecialchars($item['description']) ?> (x<?= $item['quantity'] ?>)</td>
-                <td>$<?= number_format($item['total'], 2) ?></td>
+                <td><?= htmlspecialchars($currency) ?><?= number_format($item['total'], 2) ?></td>
             </tr>
             <?php endforeach; ?>
             <tr class="total">
                 <td></td>
-                <td>Total Due: $<?= number_format($subtotal, 2) ?></td>
+                <td>Total Due: <?= htmlspecialchars($currency) ?><?= number_format($subtotal, 2) ?></td>
             </tr>
         </table>
         <?php if (!empty($notes)): ?>

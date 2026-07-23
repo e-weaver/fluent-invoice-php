@@ -9,13 +9,13 @@ class Invoice
 {
     private $data = [
         'id' => '',
-        'from_name' => '',
-        'from_email' => '',
-        'to_name' => '',
-        'to_email' => '',
+        'from' => [],
+        'to' => [],
         'items' => [],
         'notes' => '',
         'date' => '',
+        'currency' => '$',
+        'logo' => '',
     ];
 
     public function __construct(string $id)
@@ -29,17 +29,15 @@ class Invoice
         return new self($id);
     }
 
-    public function from(string $name, string $email = ''): self
+    public function from(array $details): self
     {
-        $this->data['from_name'] = $name;
-        $this->data['from_email'] = $email;
+        $this->data['from'] = $details;
         return $this;
     }
 
-    public function to(string $name, string $email = ''): self
+    public function to(array $details): self
     {
-        $this->data['to_name'] = $name;
-        $this->data['to_email'] = $email;
+        $this->data['to'] = $details;
         return $this;
     }
 
@@ -57,6 +55,18 @@ class Invoice
     public function setNotes(string $notes): self
     {
         $this->data['notes'] = $notes;
+        return $this;
+    }
+
+    public function currency(string $symbol): self
+    {
+        $this->data['currency'] = $symbol;
+        return $this;
+    }
+
+    public function logo(string $path): self
+    {
+        $this->data['logo'] = $path;
         return $this;
     }
 

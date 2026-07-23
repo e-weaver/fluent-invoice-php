@@ -18,10 +18,22 @@ composer require e-weaver/fluent-invoice-php
 use Eweaver\FluentInvoice\Invoice;
 
 Invoice::make('INV-1023')
-    ->from('eWeaver Tech', 'hello@eweaver.in')
-    ->to('Acme Corp', 'billing@acme.com')
+    ->from([
+        'eWeaver Tech',
+        '123 Developer Lane',
+        'Tech City, TC 90210',
+        'hello@eweaver.in'
+    ])
+    ->to([
+        'Acme Corp',
+        '456 Business Blvd',
+        'Corporate Town, CT 10001',
+        'billing@acme.com'
+    ])
     ->addItem('Custom Web Development', 1500)
     ->addItem('Monthly SEO Retainer', 500)
+    ->currency('€')
+    ->logo('https://example.com/path/to/logo.png')
     ->setNotes('Thank you for your business!')
     ->save('invoice.pdf');
 ```
@@ -31,6 +43,7 @@ And that's it! A beautifully formatted PDF will be saved to your specified path.
 ## Features
 
 - **Fluent API:** Clean, chainable methods.
+- **Customizable:** Add your own logo, currency symbols, and full multi-line addresses.
 - **Built-in Template:** Comes with a highly professional, modern invoice template out of the box.
 - **Dompdf Engine:** Built on top of the industry-standard `dompdf` for reliable rendering.
 
