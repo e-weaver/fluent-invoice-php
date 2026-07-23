@@ -10,14 +10,14 @@
         td { padding: 12px; vertical-align: top; }
         .text-right { text-align: right; }
         .header { margin-bottom: 50px; }
-        .title { font-size: 38px; font-weight: 300; color: #ff9a9e; letter-spacing: 2px; }
+        .title { font-size: 38px; font-weight: 300; color: <?= htmlspecialchars($color) ?>; letter-spacing: 2px; }
         .pill { background: #fdfbfb; padding: 15px 25px; border-radius: 15px; border: 1px solid #f0e6e6; }
-        .info-title { font-weight: bold; color: #ff9a9e; margin-bottom: 10px; font-size: 16px;}
-        .items-table th { background: #ff9a9e; color: #fff; padding: 15px; text-align: left; font-weight: normal; }
+        .info-title { font-weight: bold; color: <?= htmlspecialchars($color) ?>; margin-bottom: 10px; font-size: 16px;}
+        .items-table th { background: <?= htmlspecialchars($color) ?>; color: #fff; padding: 15px; text-align: left; font-weight: normal; }
         .items-table th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
         .items-table th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
         .items-table td { padding: 15px; border-bottom: 1px dashed #f0e6e6; }
-        .total-row td { font-size: 20px; font-weight: bold; color: #ff9a9e; padding-top: 30px; border-bottom: none; }
+        .total-row td { font-size: 20px; font-weight: bold; color: <?= htmlspecialchars($color) ?>; padding-top: 30px; border-bottom: none; }
         .notes { margin-top: 50px; padding: 25px; background: #fdfbfb; border-radius: 15px; color: #888; font-style: italic; text-align: center; }
     </style>
 </head>

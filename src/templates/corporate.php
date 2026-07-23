@@ -6,7 +6,7 @@
     <style>
         body { font-family: Arial, sans-serif; color: #333; font-size: 14px; line-height: 1.5; }
         .invoice-box { max-width: 800px; margin: auto; padding: 0; border: 1px solid #ccc; }
-        .header { background-color: #2c3e50; color: #fff; padding: 40px; }
+        .header { background-color: <?= htmlspecialchars($color) ?>; color: #fff; padding: 40px; }
         table { width: 100%; border-collapse: collapse; }
         td { padding: 5px; vertical-align: top; }
         .text-right { text-align: right; }
@@ -14,13 +14,13 @@
         .content { padding: 40px; }
         .info-table { margin-bottom: 40px; }
         .info-table td { padding: 0; }
-        .section-title { font-weight: bold; color: #2c3e50; border-bottom: 2px solid #2c3e50; margin-bottom: 10px; display: inline-block; padding-bottom: 3px; }
+        .section-title { font-weight: bold; color: <?= htmlspecialchars($color) ?>; border-bottom: 2px solid <?= htmlspecialchars($color) ?>; margin-bottom: 10px; display: inline-block; padding-bottom: 3px; }
         .items-table { border: 1px solid #ddd; }
-        .items-table th { background-color: #ecf0f1; padding: 12px; text-align: left; border-bottom: 1px solid #ddd; font-weight: bold; color: #2c3e50; }
+        .items-table th { background-color: #ecf0f1; padding: 12px; text-align: left; border-bottom: 1px solid #ddd; font-weight: bold; color: <?= htmlspecialchars($color) ?>; }
         .items-table td { padding: 12px; border-bottom: 1px solid #ddd; }
         .items-table .text-right { text-align: right; }
-        .total-row td { background-color: #f8f9fa; font-weight: bold; font-size: 16px; border-top: 2px solid #2c3e50; }
-        .notes { margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-left: 4px solid #2c3e50; }
+        .total-row td { background-color: #f8f9fa; font-weight: bold; font-size: 16px; border-top: 2px solid <?= htmlspecialchars($color) ?>; }
+        .notes { margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-left: 4px solid <?= htmlspecialchars($color) ?>; }
     </style>
 </head>
 <body>

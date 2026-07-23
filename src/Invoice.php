@@ -17,6 +17,7 @@ class Invoice
         'currency' => '$',
         'logo' => '',
         'template' => 'default',
+        'color' => '#3b82f6',
     ];
 
     public function __construct(string $id)
@@ -45,6 +46,12 @@ class Invoice
     public function template(string $name): self
     {
         $this->data['template'] = $name;
+        return $this;
+    }
+
+    public function color(string $hex): self
+    {
+        $this->data['color'] = $hex;
         return $this;
     }
 

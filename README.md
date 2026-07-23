@@ -18,7 +18,8 @@ composer require e-weaver/fluent-invoice-php
 use Eweaver\FluentInvoice\Invoice;
 
 Invoice::make('INV-1023')
-    ->template('minimal') // Choose from: default, minimal, corporate, bold, creative
+    ->template('minimal') // Choose from: default, minimal, corporate, elegant, creative
+    ->color('#10b981') // Set a custom primary color (defaults to #3b82f6)
     ->from([
         'eWeaver Tech',
         '123 Developer Lane',
@@ -46,7 +47,7 @@ And that's it! A beautifully formatted PDF will be saved to your specified path.
 You can completely change the look and feel of your invoice by simply calling the `->template('name')` method. We provide 5 highly professional templates out of the box:
 
 ### 1. `default`
-A clean, modern template with a blue accent.  
+A clean, modern template with a custom accent color.  
 ![Default Template](assets/screenshots/default.png)
 
 ### 2. `minimal`
@@ -54,12 +55,12 @@ A stripped-down, elegant black-and-white design focused on typography and whites
 ![Minimal Template](assets/screenshots/minimal.png)
 
 ### 3. `corporate`
-A traditional, structured template with dark blue table headers for formal enterprise use.  
+A traditional, structured template with colored headers for formal enterprise use.  
 ![Corporate Template](assets/screenshots/corporate.png)
 
-### 4. `bold`
-A high-contrast template with solid black accents and impact-style typography.  
-![Bold Template](assets/screenshots/bold.png)
+### 4. `elegant`
+A luxurious template featuring serif typography, soft borders, and colored accents.  
+![Elegant Template](assets/screenshots/elegant.png)
 
 ### 5. `creative`
 A softer template featuring pastel accents and rounded styling elements.  

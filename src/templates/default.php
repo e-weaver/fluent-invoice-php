@@ -10,7 +10,7 @@
         .invoice-box table td { padding: 8px; vertical-align: top; }
         .invoice-box table tr td:nth-child(2) { text-align: right; }
         .invoice-box table tr.top table td { padding-bottom: 30px; }
-        .invoice-box table tr.top table td.title { font-size: 40px; line-height: 40px; color: #3b82f6; font-weight: bold; }
+        .invoice-box table tr.top table td.title { font-size: 40px; line-height: 40px; color: <?= htmlspecialchars($color) ?>; font-weight: bold; }
         .invoice-box table tr.top table td.title img { max-height: 60px; max-width: 250px; }
         .invoice-box table tr.information table td { padding-bottom: 40px; }
         .invoice-box table tr.heading td { background: #f8fafc; border-bottom: 2px solid #e2e8f0; font-weight: bold; color: #475569; }
