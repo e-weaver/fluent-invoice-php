@@ -5,7 +5,7 @@
     <title>Invoice <?= htmlspecialchars($id) ?></title>
     <style>
         body { font-family: 'Georgia', serif; color: #444; font-size: 14px; line-height: 1.8; background: #fff; }
-        .invoice-box { max-width: 800px; margin: auto; padding: 50px; border: 1px solid #eaeaea; }
+        .invoice-box { max-width: 800px; margin: auto; padding: 50px; <?php if($hasBorder): ?>border: 1px solid #eaeaea;<?php endif; ?> }
         table { width: 100%; border-collapse: collapse; }
         td { padding: 10px 0; vertical-align: top; }
         .text-right { text-align: right; }

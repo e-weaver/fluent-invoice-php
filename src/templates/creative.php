@@ -5,7 +5,7 @@
     <title>Invoice <?= htmlspecialchars($id) ?></title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #5a5a5a; font-size: 14px; line-height: 1.6; background: #fffaf0; }
-        .invoice-box { max-width: 800px; margin: auto; padding: 40px; background: #ffffff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .invoice-box { max-width: 800px; margin: auto; padding: 40px; background: #ffffff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); <?php if($hasBorder): ?>border: 2px solid <?= htmlspecialchars($color) ?>;<?php endif; ?> }
         table { width: 100%; border-collapse: separate; border-spacing: 0; }
         td { padding: 12px; vertical-align: top; }
         .text-right { text-align: right; }

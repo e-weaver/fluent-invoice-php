@@ -18,6 +18,7 @@ class Invoice
         'logo' => '',
         'template' => 'default',
         'color' => '',
+        'hasBorder' => null,
     ];
 
     public function __construct(string $id)
@@ -52,6 +53,12 @@ class Invoice
     public function color(string $hex): self
     {
         $this->data['color'] = $hex;
+        return $this;
+    }
+
+    public function withBorder(bool $hasBorder = true): self
+    {
+        $this->data['hasBorder'] = $hasBorder;
         return $this;
     }
 
@@ -100,7 +107,7 @@ class Invoice
     {
         ob_start();
         
-        // Apply default colors per template if not explicitly set
+        // Apply default colors and borders per template if not explicitly set
         if (empty($this->data['color'])) {
             switch ($this->data['template']) {
                 case 'creative':
@@ -119,6 +126,10 @@ class Invoice
                     $this->data['color'] = '#3b82f6';
                     break;
             }
+        }
+
+        if ($this->data['hasBorder'] === null) {
+            $this->data['hasBorder'] = in_array($this->data['template'], ['corporate', 'elegant']);
         }
 
         extract($this->data);
