@@ -45,11 +45,25 @@ And that's it! A beautifully formatted PDF will be saved to your specified path.
 
 You can completely change the look and feel of your invoice by simply calling the `->template('name')` method. We provide 5 highly professional templates out of the box:
 
-1. **`default`**: A clean, modern template with a blue accent.
-2. **`minimal`**: A stripped-down, elegant black-and-white design focused on typography and whitespace.
-3. **`corporate`**: A traditional, structured template with dark blue table headers for formal enterprise use.
-4. **`bold`**: A high-contrast template with solid black accents and impact-style typography.
-5. **`creative`**: A softer template featuring pastel accents and rounded styling elements.
+### 1. `default`
+A clean, modern template with a blue accent.  
+![Default Template](assets/screenshots/default.png)
+
+### 2. `minimal`
+A stripped-down, elegant black-and-white design focused on typography and whitespace.  
+![Minimal Template](assets/screenshots/minimal.png)
+
+### 3. `corporate`
+A traditional, structured template with dark blue table headers for formal enterprise use.  
+![Corporate Template](assets/screenshots/corporate.png)
+
+### 4. `bold`
+A high-contrast template with solid black accents and impact-style typography.  
+![Bold Template](assets/screenshots/bold.png)
+
+### 5. `creative`
+A softer template featuring pastel accents and rounded styling elements.  
+![Creative Template](assets/screenshots/creative.png)
 
 > **Tip for Notes:** You can use `\n` in the `->setNotes()` method to create multi-line notes! 
 > Example: `->setNotes("Please pay within 15 days.\nBank: XYZ Bank\nAccount: 123456")`
