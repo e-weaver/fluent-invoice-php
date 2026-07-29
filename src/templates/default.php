@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Invoice <?= htmlspecialchars($id) ?></title>
+    <title><?= htmlspecialchars($title ?? 'INVOICE') ?> <?= htmlspecialchars($id) ?></title>
     <style>
         body { font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif; color: #333; }
         .invoice-box { max-width: 800px; margin: auto; padding: 30px; font-size: 16px; line-height: 24px; <?php if($hasBorder): ?>border: 1px solid #eaeaea;<?php endif; ?> }
@@ -30,11 +30,11 @@
                                 <?php if (!empty($logo)): ?>
                                     <img src="<?= htmlspecialchars($logo) ?>" alt="Logo">
                                 <?php else: ?>
-                                    INVOICE
+                                    <?= htmlspecialchars($title ?? 'INVOICE') ?>
                                 <?php endif; ?>
                             </td>
                             <td>
-                                Invoice #: <?= htmlspecialchars($id) ?><br>
+                                <?= htmlspecialchars(ucfirst(strtolower($title ?? 'Invoice'))) ?> #: <?= htmlspecialchars($id) ?><br>
                                 Created: <?= htmlspecialchars($date) ?><br>
                             </td>
                         </tr>

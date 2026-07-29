@@ -65,6 +65,17 @@ A luxurious template featuring serif typography, soft borders, and colored accen
 A softer template featuring pastel accents and rounded styling elements.  
 <img src="assets/screenshots/creative.png" width="400" alt="Creative Template">
 
+### 6. `bakingo`
+A clean, professional quotation-style template structured perfectly for custom quotations.
+
+## Custom Titles
+
+By default, the document will say "INVOICE". If you are generating a Quote or Quotation, you can easily change the title of the document dynamically:
+
+```php
+->title('QUOTATION') // Changes the document title and labels to say "QUOTATION"
+```
+
 ## Customizing Colors
 Each template comes with its own carefully selected default primary color (e.g., `#ff9a9e` for creative, `#2c3e50` for corporate). 
 

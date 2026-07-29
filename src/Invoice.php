@@ -9,6 +9,7 @@ class Invoice
 {
     private $data = [
         'id' => '',
+        'title' => 'INVOICE',
         'from' => [],
         'to' => [],
         'items' => [],
@@ -47,6 +48,12 @@ class Invoice
     public function template(string $name): self
     {
         $this->data['template'] = $name;
+        return $this;
+    }
+
+    public function title(string $title): self
+    {
+        $this->data['title'] = $title;
         return $this;
     }
 
