@@ -105,7 +105,22 @@ INVOICE_FROM_EMAIL="hello@eweaver.in"
 INVOICE_FROM_PHONE="+1 (555) 123-4567"
 ```
 
+## Adding Custom Metadata
+
+You can pass an array of custom key-value pairs (metadata) that will be rendered dynamically below the main document details (like Quotation Date and ID) in supported templates (like `bakingo`).
+
+```php
+->meta([
+    'Valid Till Date' => 'Mar 21, 2026',
+    'Executive' => 'Anoop Jacob',
+    'Designation' => 'Director',
+    'Phone' => '+919686997072',
+    'Email' => 'hello@company.com'
+])
+```
+
 ## Adding a Logo
+
 
 You can easily add a logo to the top left of your invoice. The `->logo()` method accepts several formats:
 

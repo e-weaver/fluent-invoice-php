@@ -20,6 +20,10 @@ class Invoice
         'template' => 'default',
         'color' => '',
         'hasBorder' => null,
+        'meta' => [],
+        'gst_type' => 'intra_state',
+        'country_of_supply' => null,
+        'place_of_supply' => null,
     ];
 
     public function __construct(string $id)
@@ -81,14 +85,41 @@ class Invoice
         return $this;
     }
 
-    public function addItem(string $description, float $price, int $quantity = 1): self
+    public function addItem(string $description, float $price, int $quantity = 1, float $gstRate = 0): self
     {
+        $amount = $price * $quantity;
+        $gstAmount = $amount * ($gstRate / 100);
+        $total = $amount + $gstAmount;
+        
         $this->data['items'][] = [
             'description' => $description,
             'price' => $price,
             'quantity' => $quantity,
-            'total' => $price * $quantity
+            'gstRate' => $gstRate,
+            'amount' => $amount,
+            'cgst' => $gstAmount / 2,
+            'sgst' => $gstAmount / 2,
+            'igst' => $gstAmount,
+            'total' => $total
         ];
+        return $this;
+    }
+
+    public function gstType(string $type): self
+    {
+        $this->data['gst_type'] = $type;
+        return $this;
+    }
+
+    public function countryOfSupply(string $country): self
+    {
+        $this->data['country_of_supply'] = $country;
+        return $this;
+    }
+
+    public function placeOfSupply(string $place): self
+    {
+        $this->data['place_of_supply'] = $place;
         return $this;
     }
 
@@ -107,6 +138,12 @@ class Invoice
     public function logo(string $path): self
     {
         $this->data['logo'] = $path;
+        return $this;
+    }
+
+    public function meta(array $meta): self
+    {
+        $this->data['meta'] = $meta;
         return $this;
     }
 
