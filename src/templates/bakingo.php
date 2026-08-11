@@ -195,11 +195,20 @@
         if (!function_exists('fmtActual')) {
             function fmtActual($val) {
                 if (!is_numeric($val)) return $val;
-                $str = (string) (float) $val;
-                if (strpos($str, '.') === false) return number_format($val, 2);
-                $decimals = strlen(substr(strrchr($str, "."), 1));
-                if ($decimals == 1) return $str . '0';
-                return $str;
+                $val = (float) $val;
+                if (floor($val) == $val) {
+                    return number_format($val, 2);
+                }
+                
+                $parts = explode('.', (string) $val);
+                $intPart = number_format((float) $parts[0]);
+                $decPart = isset($parts[1]) ? $parts[1] : '';
+                
+                if (strlen($decPart) == 1) {
+                    $decPart .= '0';
+                }
+                
+                return $intPart . '.' . $decPart;
             }
         }
     ?>
