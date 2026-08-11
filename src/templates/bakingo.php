@@ -191,7 +191,18 @@
     </style>
 </head>
 <body>
-    
+    <?php
+        if (!function_exists('fmtActual')) {
+            function fmtActual($val) {
+                if (!is_numeric($val)) return $val;
+                $str = (string) (float) $val;
+                if (strpos($str, '.') === false) return number_format($val, 2);
+                $decimals = strlen(substr(strrchr($str, "."), 1));
+                if ($decimals == 1) return $str . '0';
+                return $str;
+            }
+        }
+    ?>
     <div class="footer">
         <table class="footer-table">
             <tr>
@@ -349,21 +360,26 @@
             ?>
             <tr>
                 <td class="left">
-                    <?= $counter ?>. <?= htmlspecialchars($item['description']) ?>
+                    <?php if (!empty($item['is_sub_item'])): ?>
+                        &nbsp;&nbsp;&nbsp; &#8627; &nbsp; <?= htmlspecialchars($item['description']) ?>
+                    <?php else: ?>
+                        <?= $counter ?>. <?= htmlspecialchars($item['description']) ?>
+                        <?php $counter++; ?>
+                    <?php endif; ?>
                 </td>
                 <td><?= $gst ?>%</td>
                 <td><?= $item['quantity'] ?></td>
-                <td><?= htmlspecialchars($currency) ?><?= number_format($item['price'], 2) ?></td>
-                <td><?= htmlspecialchars($currency) ?><?= number_format($amt, 2) ?></td>
+                <td><?= htmlspecialchars($currency) ?><?= fmtActual($item['price']) ?></td>
+                <td><?= htmlspecialchars($currency) ?><?= fmtActual($amt) ?></td>
                 <?php if (($gst_type ?? 'intra_state') === 'inter_state'): ?>
-                    <td><?= htmlspecialchars($currency) ?><?= number_format($igst, 2) ?></td>
+                    <td><?= htmlspecialchars($currency) ?><?= fmtActual($igst) ?></td>
                 <?php else: ?>
-                    <td><?= htmlspecialchars($currency) ?><?= number_format($cgst, 2) ?></td>
-                    <td><?= htmlspecialchars($currency) ?><?= number_format($sgst, 2) ?></td>
+                    <td><?= htmlspecialchars($currency) ?><?= fmtActual($cgst) ?></td>
+                    <td><?= htmlspecialchars($currency) ?><?= fmtActual($sgst) ?></td>
                 <?php endif; ?>
-                <td class="right"><?= htmlspecialchars($currency) ?><?= number_format($tot, 2) ?></td>
+                <td class="right"><?= htmlspecialchars($currency) ?><?= fmtActual($tot) ?></td>
             </tr>
-            <?php $counter++; endforeach; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
 
@@ -371,32 +387,32 @@
         <table class="summary-table">
             <tr>
                 <td>Amount</td>
-                <td><?= htmlspecialchars($currency) ?><?= number_format($totalAmount, 2) ?></td>
+                <td><?= htmlspecialchars($currency) ?><?= fmtActual($totalAmount) ?></td>
             </tr>
             <?php if (($gst_type ?? 'intra_state') === 'inter_state'): ?>
                 <?php if($totalIGST > 0): ?>
                 <tr>
                     <td>IGST</td>
-                    <td><?= htmlspecialchars($currency) ?><?= number_format($totalIGST, 2) ?></td>
+                    <td><?= htmlspecialchars($currency) ?><?= fmtActual($totalIGST) ?></td>
                 </tr>
                 <?php endif; ?>
             <?php else: ?>
                 <?php if($totalCGST > 0): ?>
                 <tr>
                     <td>CGST</td>
-                    <td><?= htmlspecialchars($currency) ?><?= number_format($totalCGST, 2) ?></td>
+                    <td><?= htmlspecialchars($currency) ?><?= fmtActual($totalCGST) ?></td>
                 </tr>
                 <?php endif; ?>
                 <?php if($totalSGST > 0): ?>
                 <tr>
                     <td>SGST</td>
-                    <td><?= htmlspecialchars($currency) ?><?= number_format($totalSGST, 2) ?></td>
+                    <td><?= htmlspecialchars($currency) ?><?= fmtActual($totalSGST) ?></td>
                 </tr>
                 <?php endif; ?>
             <?php endif; ?>
             <tr class="total-row">
                 <td>Total</td>
-                <td><?= htmlspecialchars($currency) ?><?= number_format($totalFinal, 2) ?></td>
+                <td><?= htmlspecialchars($currency) ?><?= fmtActual($totalFinal) ?></td>
             </tr>
         </table>
     </div>

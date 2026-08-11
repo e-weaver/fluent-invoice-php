@@ -29,7 +29,7 @@ class Invoice
     public function __construct(string $id)
     {
         $this->data['id'] = $id;
-        $this->data['date'] = date('F j, Y');
+        $this->data['date'] = date('d M Y');
         
         // Attempt to load default 'from' address from .env / environment variables
         $defaultFrom = [];
@@ -52,6 +52,12 @@ class Invoice
     public function template(string $name): self
     {
         $this->data['template'] = $name;
+        return $this;
+    }
+
+    public function date(string $date): self
+    {
+        $this->data['date'] = $date;
         return $this;
     }
 
@@ -85,7 +91,7 @@ class Invoice
         return $this;
     }
 
-    public function addItem(string $description, float $price, int $quantity = 1, float $gstRate = 0): self
+    public function addItem(string $description, float $price, float $quantity = 1, float $gstRate = 0, bool $isSubItem = false): self
     {
         $amount = $price * $quantity;
         $gstAmount = $amount * ($gstRate / 100);
@@ -100,7 +106,8 @@ class Invoice
             'cgst' => $gstAmount / 2,
             'sgst' => $gstAmount / 2,
             'igst' => $gstAmount,
-            'total' => $total
+            'total' => $total,
+            'is_sub_item' => $isSubItem
         ];
         return $this;
     }
