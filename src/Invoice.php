@@ -91,7 +91,7 @@ class Invoice
         return $this;
     }
 
-    public function addItem(string $description, float $price, float $quantity = 1, float $gstRate = 0, bool $isSubItem = false): self
+    public function addItem(string $description, float $price, float $quantity = 1, float $gstRate = 0, bool $isSubItem = false, ?string $specs = null, ?float $originalPrice = null): self
     {
         $amount = $price * $quantity;
         $gstAmount = $amount * ($gstRate / 100);
@@ -107,7 +107,9 @@ class Invoice
             'sgst' => $gstAmount / 2,
             'igst' => $gstAmount,
             'total' => $total,
-            'is_sub_item' => $isSubItem
+            'is_sub_item' => $isSubItem,
+            'specs' => $specs,
+            'originalPrice' => $originalPrice
         ];
         return $this;
     }

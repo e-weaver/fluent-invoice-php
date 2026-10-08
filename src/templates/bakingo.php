@@ -375,10 +375,18 @@
                         <?= $counter ?>. <?= htmlspecialchars($item['description']) ?>
                         <?php $counter++; ?>
                     <?php endif; ?>
+                    <?php if (!empty($item['specs'])): ?>
+                        <div style="font-size: 8.5px; color: #555; margin-top: 3px; margin-left: <?= !empty($item['is_sub_item']) ? '24px' : '12px' ?>;"><?= nl2br(htmlspecialchars($item['specs'])) ?></div>
+                    <?php endif; ?>
                 </td>
                 <td><?= $gst ?>%</td>
                 <td><?= $item['quantity'] ?></td>
-                <td><?= htmlspecialchars($currency) ?><?= fmtActual($item['price']) ?></td>
+                <td>
+                    <?php if (!empty($item['originalPrice']) && $item['originalPrice'] > $item['price']): ?>
+                        <span style="text-decoration: line-through; color: #999; margin-right: 4px;"><?= htmlspecialchars($currency) ?><?= fmtActual($item['originalPrice']) ?></span>
+                    <?php endif; ?>
+                    <?= htmlspecialchars($currency) ?><?= fmtActual($item['price']) ?>
+                </td>
                 <td><?= htmlspecialchars($currency) ?><?= fmtActual($amt) ?></td>
                 <?php if (($gst_type ?? 'intra_state') === 'inter_state'): ?>
                     <td><?= htmlspecialchars($currency) ?><?= fmtActual($igst) ?></td>
